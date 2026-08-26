@@ -268,19 +268,20 @@ button {
 }
 
 .icon-grid {
-  column-count: 4;
-  column-gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
 }
 
 .icon-card {
-  display: inline-block;
+  display: block;
   width: 100%;
-  margin: 0 0 14px;
+  margin: 0;
   overflow: hidden;
   border: 0;
   border-radius: var(--radius);
   background: var(--surface);
-  break-inside: avoid;
+  min-width: 0;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   outline: none;
@@ -507,7 +508,7 @@ button {
 
 @media (max-width: 900px) {
   .icon-grid {
-    column-count: 3;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -602,8 +603,8 @@ button {
   }
 
   .icon-grid {
-    column-count: 2;
-    column-gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .artboard {

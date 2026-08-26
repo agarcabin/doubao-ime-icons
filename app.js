@@ -1,4 +1,4 @@
-var RAW_BASE_URL = "https://cdn.jsdelivr.net/gh/agarcabin/doubao-ime-icons@main";
+var IMAGE_URLS = window.IMAGE_URLS || {};
 
 var COPY_ICON = '<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="6.5" y="6.5" width="9" height="9" rx="1.5"></rect><path d="M13.5 6.5V5A1.5 1.5 0 0 0 12 3.5H5A1.5 1.5 0 0 0 3.5 5v7A1.5 1.5 0 0 0 5 13.5h1.5"></path></svg>';
 
@@ -152,7 +152,8 @@ function escapeHtml(value) {
 
 function createCard(collection, item) {
   var imagePath = item.path || ("icons/" + (collection.folder || collection.id) + "/" + item.file);
-  var rawUrl = RAW_BASE_URL + "/" + imagePath;
+  var rawUrl = IMAGE_URLS[imagePath];
+  if (!rawUrl) throw new Error("缺少 S.EE 直链：" + imagePath);
   var cardClass = collection.id + "-card";
   var extension = imagePath.split(".").pop().toUpperCase();
   var format = extension === "JPEG" ? "JPG" : extension;
@@ -168,7 +169,7 @@ function createCard(collection, item) {
     "  </div>",
     '  <div class="card-body">',
     '    <div class="card-title-row"><h4>' + safeName + '</h4><span class="card-kind">' + collection.kind + "</span></div>",
-    '    <p class="card-meta" title="' + safeUrl + '">' + escapeHtml(item.detail) + " · CDN 直链</p>",
+    '    <p class="card-meta" title="' + safeUrl + '">' + escapeHtml(item.detail) + " · S.EE 直链</p>",
     '    <button class="copy-button" type="button" data-copy-url="' + safeUrl + '" data-copy-name="' + safeName + '" aria-label="复制 ' + safeName + ' 的直链">复制直链 ' + COPY_ICON + "</button>",
     "  </div>",
     "</article>"
