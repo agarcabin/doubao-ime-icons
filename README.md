@@ -5,9 +5,9 @@
 当前分类：
 
 - 群友分享：13 个，原有动态、静态和默认素材已合并到这里。
-- 输入法预设：18 个，包含常见输入法、手机品牌预设、通用键盘预设和一个全透明 PNG。
+- 输入法预设：14 个，使用应用商店或项目仓库中的真实图标，并保留一个全透明 PNG。
 - 静态推荐：16 个 PNG。
-- 动态推荐：6 个轻量循环 GIF。
+- 动态推荐：13 个 GIF，包含轻量循环动画和吉伊卡哇 / 小八热门动画。
 
 ## 在线页面
 
@@ -22,9 +22,11 @@ jsDelivr 通常比直接复制 `raw.githubusercontent.com` 更适合做图片直
 ## 素材说明
 
 - 原有 GIF、PNG 和默认图标保留在 `icons/animated`、`icons/static`、`icons/default`。
-- 输入法品牌图形和静态推荐图标由 Iconify 提供的 Simple Icons、Noto Emoji、Fluent Emoji 等开源图标集合转换为 PNG。
-- “讯飞输入法”“手心输入法”“触宝输入法”等没有统一品牌素材的项目使用了对应的语音、手势或键盘通用预设，并在卡片详情中标明“通用预设”。
-- `icons/recommended-animated` 中的 6 个 GIF 是为左上角小尺寸显示制作的轻量循环图标。
+- 搜狗、百度、讯飞、微信、Gboard、SwiftKey、仓输入法、鼠输入法和 iRime 使用对应 App Store 条目的应用图标。
+- Trime、Fcitx5 for Android、FlorisBoard 和 HeliBoard 使用各自项目仓库中的官方图标。
+- 之前误标为输入法图标的华为、小米、OPPO、vivo、三星等品牌 Logo，以及手心、触宝等通用占位图，已经从预设组移除。
+- 静态推荐图标来自 Iconify 提供的 Noto Emoji、Fluent Emoji 等开源图标集合。
+- 新增的吉伊卡哇 / 小八 GIF 来自 Tenor 页面。详细来源和许可说明见 [SOURCES.md](SOURCES.md)。
 
 ## 本地预览
 

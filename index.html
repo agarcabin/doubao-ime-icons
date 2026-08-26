@@ -33,28 +33,28 @@
             <p class="toolbar-hint">点击卡片或按钮即可复制</p>
           </div>
 
-          <nav class="category-nav" aria-label="图标分类">
-            <a class="category-link active" href="#shared">
+          <div class="category-nav" role="tablist" aria-label="图标分类">
+            <button class="category-tab active" id="tab-shared" type="button" role="tab" aria-selected="true" aria-controls="shared" data-category="shared">
               <span class="category-name-full">群友分享</span>
               <span class="category-name-short">分享</span>
               <b data-category-count="shared">13</b>
-            </a>
-            <a class="category-link" href="#ime-presets">
+            </button>
+            <button class="category-tab" id="tab-ime-presets" type="button" role="tab" aria-selected="false" aria-controls="ime-presets" data-category="ime-presets" tabindex="-1">
               <span class="category-name-full">输入法预设</span>
               <span class="category-name-short">预设</span>
-              <b data-category-count="ime-presets">18</b>
-            </a>
-            <a class="category-link" href="#recommended-static">
+              <b data-category-count="ime-presets">14</b>
+            </button>
+            <button class="category-tab" id="tab-recommended-static" type="button" role="tab" aria-selected="false" aria-controls="recommended-static" data-category="recommended-static" tabindex="-1">
               <span class="category-name-full">静态推荐</span>
               <span class="category-name-short">静态</span>
               <b data-category-count="recommended-static">16</b>
-            </a>
-            <a class="category-link" href="#recommended-animated">
+            </button>
+            <button class="category-tab" id="tab-recommended-animated" type="button" role="tab" aria-selected="false" aria-controls="recommended-animated" data-category="recommended-animated" tabindex="-1">
               <span class="category-name-full">动态推荐</span>
               <span class="category-name-short">动态</span>
-              <b data-category-count="recommended-animated">6</b>
-            </a>
-          </nav>
+              <b data-category-count="recommended-animated">13</b>
+            </button>
+          </div>
 
           <div id="icon-sections"></div>
         </section>

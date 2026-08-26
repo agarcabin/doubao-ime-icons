@@ -35,23 +35,19 @@ var collections = [
     tag: "PNG",
     folder: "input-methods",
     items: [
-      { file: "sogou.png", name: "搜狗输入法", detail: "PNG · 品牌预设" },
-      { file: "baidu.png", name: "百度输入法", detail: "PNG · 品牌预设" },
-      { file: "wechat.png", name: "微信输入法", detail: "PNG · 品牌预设" },
-      { file: "qq.png", name: "QQ 输入法", detail: "PNG · 品牌预设" },
-      { file: "iflytek.png", name: "讯飞输入法", detail: "PNG · 语音预设" },
-      { file: "huawei.png", name: "小艺输入法", detail: "PNG · 华为预设" },
-      { file: "xiaomi.png", name: "小米输入法", detail: "PNG · 小米预设" },
-      { file: "oppo.png", name: "OPPO 输入法", detail: "PNG · OPPO 预设" },
-      { file: "vivo.png", name: "vivo 输入法", detail: "PNG · vivo 预设" },
-      { file: "gboard.png", name: "Gboard", detail: "PNG · Google 预设" },
-      { file: "swiftkey.png", name: "Microsoft SwiftKey", detail: "PNG · SwiftKey 预设" },
-      { file: "rime.png", name: "Rime / 中州韵", detail: "PNG · Rime 预设" },
-      { file: "samsung-keyboard.png", name: "三星键盘", detail: "PNG · Samsung 预设" },
-      { file: "android-ime.png", name: "安卓系统输入法", detail: "PNG · Android 预设" },
-      { file: "keyboard-generic.png", name: "通用键盘", detail: "PNG · 极简预设" },
-      { file: "palm-input.png", name: "手心输入法", detail: "PNG · 通用预设" },
-      { file: "touchpal.png", name: "触宝输入法", detail: "PNG · 通用预设" },
+      { file: "sogou.png", name: "搜狗输入法", detail: "PNG · App Store 官方图标" },
+      { file: "baidu.png", name: "百度输入法", detail: "PNG · App Store 官方图标" },
+      { file: "iflytek.png", name: "讯飞输入法", detail: "PNG · App Store 官方图标" },
+      { file: "wechat.png", name: "微信输入法", detail: "PNG · App Store 官方图标" },
+      { file: "gboard.png", name: "Gboard", detail: "PNG · App Store 官方图标" },
+      { file: "swiftkey.png", name: "Microsoft SwiftKey", detail: "PNG · App Store 官方图标" },
+      { file: "hamster.png", name: "仓输入法", detail: "PNG · App Store 官方图标" },
+      { file: "nanomouse.png", name: "鼠输入法 NanoMouse", detail: "PNG · App Store 官方图标" },
+      { file: "irime.png", name: "iRime 输入法", detail: "PNG · App Store 官方图标" },
+      { file: "trime.png", name: "Trime 同文输入法", detail: "PNG · 项目官方图标" },
+      { file: "fcitx5-android.png", name: "Fcitx5 for Android", detail: "PNG · 项目官方图标" },
+      { file: "florisboard.png", name: "FlorisBoard", detail: "PNG · 项目官方图标" },
+      { file: "heliboard.png", name: "HeliBoard", detail: "PNG · 项目官方图标" },
       { file: "transparent.png", name: "完全透明", detail: "PNG · 512 × 512" }
     ]
   },
@@ -94,7 +90,14 @@ var collections = [
       { file: "neon-heart.gif", name: "霓虹爱心", detail: "GIF · 256 × 256" },
       { file: "typing-dots.gif", name: "输入中", detail: "GIF · 256 × 256" },
       { file: "rainbow-beads.gif", name: "彩珠旋转", detail: "GIF · 256 × 256" },
-      { file: "soft-wave.gif", name: "柔和波纹", detail: "GIF · 256 × 256" }
+      { file: "soft-wave.gif", name: "柔和波纹", detail: "GIF · 256 × 256" },
+      { file: "chiikawa-hachiware-dance-mini.gif", name: "吉伊小八 mini 舞", detail: "GIF · 240 × 240 · Tenor" },
+      { file: "hachiware-bow.gif", name: "小八蝴蝶结", detail: "GIF · 498 × 435 · Tenor" },
+      { file: "hachiware-surprised.gif", name: "小八惊讶", detail: "GIF · 498 × 498 · Tenor" },
+      { file: "chiikawa-trio-dance.gif", name: "吉伊三小只跳舞", detail: "GIF · 421 × 284 · Tenor" },
+      { file: "chiikawa-hachiware-blink.gif", name: "吉伊小八眨眼", detail: "GIF · 498 × 281 · Tenor" },
+      { file: "chiikawa-hachiware-eating.gif", name: "吉伊小八吃饭", detail: "GIF · 480 × 270 · Tenor" },
+      { file: "chiikawa-hachiware-pair.gif", name: "吉伊小八贴贴", detail: "GIF · 498 × 281 · Tenor" }
     ]
   }
 ];
@@ -138,7 +141,7 @@ function renderCollections() {
   target.innerHTML = collections.map(function (collection) {
     total += collection.items.length;
     return [
-      '<section class="category-section" id="' + collection.id + '" aria-labelledby="' + collection.id + '-title">',
+      '<section class="category-section" id="' + collection.id + '" role="tabpanel" aria-labelledby="tab-' + collection.id + '"' + (collection.id === "shared" ? "" : " hidden") + ">",
       '  <div class="section-heading">',
       "    <div>",
       '      <span class="section-number">' + collection.number + "</span>",
@@ -241,27 +244,57 @@ function bindInteractions() {
   });
 }
 
-function bindCategoryState() {
-  var links = document.querySelectorAll(".category-link");
-  var sections = document.querySelectorAll(".category-section");
-  if (!("IntersectionObserver" in window)) return;
+function setActiveCategory(categoryId, updateHash) {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".category-tab"));
+  var panels = Array.prototype.slice.call(document.querySelectorAll(".category-section"));
+  var valid = collections.some(function (collection) {
+    return collection.id === categoryId;
+  });
+  if (!valid) categoryId = collections[0].id;
 
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      links.forEach(function (link) {
-        link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id);
-      });
+  tabs.forEach(function (tab) {
+    var active = tab.getAttribute("data-category") === categoryId;
+    tab.classList.toggle("active", active);
+    tab.setAttribute("aria-selected", active ? "true" : "false");
+    tab.setAttribute("tabindex", active ? "0" : "-1");
+  });
+
+  panels.forEach(function (panel) {
+    panel.hidden = panel.id !== categoryId;
+  });
+
+  if (updateHash && window.history && window.history.replaceState) {
+    window.history.replaceState(null, "", "#" + categoryId);
+  }
+}
+
+function bindCategoryTabs() {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".category-tab"));
+  var hashCategory = window.location.hash.replace(/^#/, "");
+  setActiveCategory(hashCategory || collections[0].id, false);
+
+  tabs.forEach(function (tab, index) {
+    tab.addEventListener("click", function () {
+      setActiveCategory(tab.getAttribute("data-category"), true);
     });
-  }, { rootMargin: "-18% 0px -68% 0px", threshold: 0 });
 
-  sections.forEach(function (section) {
-    observer.observe(section);
+    tab.addEventListener("keydown", function (event) {
+      var nextIndex = index;
+      if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
+      else if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
+      else if (event.key === "Home") nextIndex = 0;
+      else if (event.key === "End") nextIndex = tabs.length - 1;
+      else return;
+
+      event.preventDefault();
+      tabs[nextIndex].focus();
+      setActiveCategory(tabs[nextIndex].getAttribute("data-category"), true);
+    });
   });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
   renderCollections();
   bindInteractions();
-  bindCategoryState();
+  bindCategoryTabs();
 });
