@@ -42,7 +42,6 @@ var collections = [
       { file: "gboard.png", name: "Gboard", detail: "PNG · App Store 官方图标" },
       { file: "swiftkey.png", name: "Microsoft SwiftKey", detail: "PNG · App Store 官方图标" },
       { file: "hamster.png", name: "仓输入法", detail: "PNG · App Store 官方图标" },
-      { file: "nanomouse.png", name: "鼠输入法 NanoMouse", detail: "PNG · App Store 官方图标" },
       { file: "irime.png", name: "iRime 输入法", detail: "PNG · App Store 官方图标" },
       { file: "trime.png", name: "Trime 同文输入法", detail: "PNG · 项目官方图标" },
       { file: "fcitx5-android.png", name: "Fcitx5 for Android", detail: "PNG · 项目官方图标" },
@@ -92,12 +91,12 @@ var collections = [
       { file: "rainbow-beads.gif", name: "彩珠旋转", detail: "GIF · 256 × 256" },
       { file: "soft-wave.gif", name: "柔和波纹", detail: "GIF · 256 × 256" },
       { file: "chiikawa-hachiware-dance-mini.gif", name: "吉伊小八 mini 舞", detail: "GIF · 240 × 240 · Tenor" },
-      { file: "hachiware-bow.gif", name: "小八蝴蝶结", detail: "GIF · 498 × 435 · Tenor" },
+      { file: "hachiware-bow.gif", name: "小八蝴蝶结", detail: "GIF · 435 × 435 · 居中裁切" },
       { file: "hachiware-surprised.gif", name: "小八惊讶", detail: "GIF · 498 × 498 · Tenor" },
-      { file: "chiikawa-trio-dance.gif", name: "吉伊三小只跳舞", detail: "GIF · 421 × 284 · Tenor" },
-      { file: "chiikawa-hachiware-blink.gif", name: "吉伊小八眨眼", detail: "GIF · 498 × 281 · Tenor" },
-      { file: "chiikawa-hachiware-eating.gif", name: "吉伊小八吃饭", detail: "GIF · 480 × 270 · Tenor" },
-      { file: "chiikawa-hachiware-pair.gif", name: "吉伊小八贴贴", detail: "GIF · 498 × 281 · Tenor" }
+      { file: "chiikawa-hachiware-walk.gif", name: "吉伊小八散步", detail: "GIF · 498 × 498 · Tenor" },
+      { file: "hachiware-running.gif", name: "小八跑跑", detail: "GIF · 498 × 498 · Tenor" },
+      { file: "hachiware-smile.gif", name: "小八微笑", detail: "GIF · 498 × 498 · Tenor" },
+      { file: "usagi-music.gif", name: "乌萨奇音乐", detail: "GIF · 498 × 498 · Tenor" }
     ]
   }
 ];
@@ -141,7 +140,7 @@ function renderCollections() {
   target.innerHTML = collections.map(function (collection) {
     total += collection.items.length;
     return [
-      '<section class="category-section" id="' + collection.id + '" role="tabpanel" aria-labelledby="tab-' + collection.id + '"' + (collection.id === "shared" ? "" : " hidden") + ">",
+      '<section class="category-section" id="' + collection.id + '" aria-labelledby="' + collection.id + '-title">',
       '  <div class="section-heading">',
       "    <div>",
       '      <span class="section-number">' + collection.number + "</span>",
@@ -244,23 +243,26 @@ function bindInteractions() {
   });
 }
 
-function setActiveCategory(categoryId, updateHash) {
-  var tabs = Array.prototype.slice.call(document.querySelectorAll(".category-tab"));
-  var panels = Array.prototype.slice.call(document.querySelectorAll(".category-section"));
-  var valid = collections.some(function (collection) {
-    return collection.id === categoryId;
-  });
-  if (!valid) categoryId = collections[0].id;
+function resolveCategory(categoryId) {
+  var aliases = {
+    share: "shared",
+    presets: "ime-presets",
+    static: "recommended-static",
+    dynamic: "recommended-animated"
+  };
+  var resolved = aliases[categoryId] || categoryId;
+  return collections.some(function (collection) {
+    return collection.id === resolved;
+  }) ? resolved : collections[0].id;
+}
 
-  tabs.forEach(function (tab) {
+function setActiveCategory(categoryId, updateHash) {
+  categoryId = resolveCategory(categoryId);
+  document.querySelectorAll(".category-tab").forEach(function (tab) {
     var active = tab.getAttribute("data-category") === categoryId;
     tab.classList.toggle("active", active);
-    tab.setAttribute("aria-selected", active ? "true" : "false");
-    tab.setAttribute("tabindex", active ? "0" : "-1");
-  });
-
-  panels.forEach(function (panel) {
-    panel.hidden = panel.id !== categoryId;
+    if (active) tab.setAttribute("aria-current", "true");
+    else tab.removeAttribute("aria-current");
   });
 
   if (updateHash && window.history && window.history.replaceState) {
@@ -270,12 +272,47 @@ function setActiveCategory(categoryId, updateHash) {
 
 function bindCategoryTabs() {
   var tabs = Array.prototype.slice.call(document.querySelectorAll(".category-tab"));
-  var hashCategory = window.location.hash.replace(/^#/, "");
-  setActiveCategory(hashCategory || collections[0].id, false);
+  var sections = collections.map(function (collection) {
+    return document.getElementById(collection.id);
+  });
+  var hashCategory = resolveCategory(window.location.hash.replace(/^#/, ""));
+  var ticking = false;
 
+  function scrollToCategory(categoryId, smooth) {
+    var resolved = resolveCategory(categoryId);
+    var section = document.getElementById(resolved);
+    setActiveCategory(resolved, true);
+    section.scrollIntoView({
+      behavior: smooth && !window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "smooth" : "auto",
+      block: "start"
+    });
+  }
+
+  function updateCategoryFromScroll() {
+    ticking = false;
+    var nav = document.querySelector(".category-nav");
+    var marker = nav.getBoundingClientRect().bottom + 32;
+    var activeId = sections[0].id;
+    sections.forEach(function (section) {
+      if (section.getBoundingClientRect().top <= marker) activeId = section.id;
+    });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+      activeId = sections[sections.length - 1].id;
+    }
+    setActiveCategory(activeId, false);
+  }
+
+  function requestScrollUpdate() {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(updateCategoryFromScroll);
+  }
+
+  setActiveCategory(hashCategory, false);
   tabs.forEach(function (tab, index) {
-    tab.addEventListener("click", function () {
-      setActiveCategory(tab.getAttribute("data-category"), true);
+    tab.addEventListener("click", function (event) {
+      event.preventDefault();
+      scrollToCategory(tab.getAttribute("data-category"), true);
     });
 
     tab.addEventListener("keydown", function (event) {
@@ -288,8 +325,15 @@ function bindCategoryTabs() {
 
       event.preventDefault();
       tabs[nextIndex].focus();
-      setActiveCategory(tabs[nextIndex].getAttribute("data-category"), true);
+      scrollToCategory(tabs[nextIndex].getAttribute("data-category"), true);
     });
+  });
+
+  window.addEventListener("scroll", requestScrollUpdate, { passive: true });
+  window.addEventListener("resize", requestScrollUpdate);
+  window.requestAnimationFrame(function () {
+    if (window.location.hash) scrollToCategory(hashCategory, false);
+    else updateCategoryFromScroll();
   });
 }
 
