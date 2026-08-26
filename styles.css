@@ -133,6 +133,18 @@ button {
   letter-spacing: -0.04em;
 }
 
+.library-subtitle {
+  margin: 8px 0 0;
+  color: var(--muted-dark);
+  font-size: 14px;
+}
+
+.qq-group {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .toolbar-hint {
   margin: 0 0 3px;
   color: var(--muted);
@@ -530,6 +542,11 @@ button {
 
   .library-toolbar h1 {
     font-size: 24px;
+  }
+
+  .library-subtitle {
+    margin-top: 6px;
+    font-size: 13px;
   }
 
   .category-nav {

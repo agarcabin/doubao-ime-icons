@@ -73,7 +73,27 @@ var collections = [
       { file: "star.png", name: "星星", detail: "PNG · 彩色图标" },
       { file: "blue-heart.png", name: "蓝色爱心", detail: "PNG · 彩色图标" },
       { file: "cloud.png", name: "云朵", detail: "PNG · 彩色图标" },
-      { file: "party-popper.png", name: "庆祝", detail: "PNG · 彩色图标" }
+      { file: "party-popper.png", name: "庆祝", detail: "PNG · 彩色图标" },
+      { path: "icons/brand-logos/oppo.png", name: "OPPO", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/vivo.png", name: "vivo", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/blackshark.png", name: "黑鲨 Black Shark", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/microsoft.png", name: "Microsoft", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/openai.png", name: "OpenAI / GPT", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/bmw.png", name: "BMW 宝马", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/hermes-agent.png", name: "Hermes Agent", detail: "PNG · 项目 Logo" },
+      { path: "icons/brand-logos/deepseek.png", name: "DeepSeek", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/xiaomi.png", name: "小米", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/huawei.png", name: "华为", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/honor.png", name: "荣耀 HONOR", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/oneplus.png", name: "一加 OnePlus", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/samsung.png", name: "Samsung", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/apple.png", name: "Apple", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/google.png", name: "Google", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/nvidia.png", name: "NVIDIA", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/github.png", name: "GitHub", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/android.png", name: "Android", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/tesla.png", name: "Tesla", detail: "PNG · 品牌 Logo" },
+      { path: "icons/brand-logos/porsche.png", name: "Porsche", detail: "PNG · 品牌 Logo" }
     ]
   },
   {
@@ -96,7 +116,27 @@ var collections = [
       { file: "chiikawa-hachiware-walk.gif", name: "吉伊小八散步", detail: "GIF · 498 × 498 · Tenor" },
       { file: "hachiware-running.gif", name: "小八跑跑", detail: "GIF · 498 × 498 · Tenor" },
       { file: "hachiware-smile.gif", name: "小八微笑", detail: "GIF · 498 × 498 · Tenor" },
-      { file: "usagi-music.gif", name: "乌萨奇音乐", detail: "GIF · 498 × 498 · Tenor" }
+      { file: "usagi-music.gif", name: "乌萨奇音乐", detail: "GIF · 498 × 498 · Tenor" },
+      { file: "cat-bounce.gif", name: "猫咪弹跳", detail: "GIF · 256 × 256 · 透明" },
+      { file: "dog-wag.gif", name: "小狗摇摆", detail: "GIF · 256 × 256 · 透明" },
+      { file: "panda-nod.gif", name: "熊猫点头", detail: "GIF · 256 × 256 · 透明" },
+      { file: "rocket-launch.gif", name: "火箭升空", detail: "GIF · 256 × 256 · 透明" },
+      { file: "rainbow-float.gif", name: "彩虹漂浮", detail: "GIF · 256 × 256 · 透明" },
+      { file: "sparkles-twinkle.gif", name: "闪光闪烁", detail: "GIF · 256 × 256 · 透明" },
+      { file: "fire-flicker.gif", name: "火焰跳动", detail: "GIF · 256 × 256 · 透明" },
+      { file: "moon-drift.gif", name: "月亮漫游", detail: "GIF · 256 × 256 · 透明" },
+      { file: "blossom-spin.gif", name: "樱花旋转", detail: "GIF · 256 × 256 · 透明" },
+      { file: "die-tumble.gif", name: "骰子翻滚", detail: "GIF · 256 × 256 · 透明" },
+      { file: "music-pulse.gif", name: "音符律动", detail: "GIF · 256 × 256 · 透明" },
+      { file: "coffee-bob.gif", name: "咖啡漂浮", detail: "GIF · 256 × 256 · 透明" },
+      { file: "star-pop.gif", name: "星星弹出", detail: "GIF · 256 × 256 · 透明" },
+      { file: "blue-heart-beat.gif", name: "蓝心跳动", detail: "GIF · 256 × 256 · 透明" },
+      { file: "cloud-float.gif", name: "云朵飘动", detail: "GIF · 256 × 256 · 透明" },
+      { file: "party-burst.gif", name: "派对喷花", detail: "GIF · 256 × 256 · 透明" },
+      { file: "sun-rays.gif", name: "太阳转动", detail: "GIF · 256 × 256 · 透明" },
+      { file: "lightning-flash.gif", name: "闪电闪烁", detail: "GIF · 256 × 256 · 透明" },
+      { file: "planet-orbit.gif", name: "星球轨道", detail: "GIF · 256 × 256 · 透明" },
+      { file: "chat-typing.gif", name: "对话输入中", detail: "GIF · 256 × 256 · 透明" }
     ]
   }
 ];
@@ -114,13 +154,15 @@ function createCard(collection, item) {
   var imagePath = item.path || ("icons/" + (collection.folder || collection.id) + "/" + item.file);
   var rawUrl = RAW_BASE_URL + "/" + imagePath;
   var cardClass = collection.id + "-card";
+  var extension = imagePath.split(".").pop().toUpperCase();
+  var format = extension === "JPEG" ? "JPG" : extension;
   var safeUrl = escapeHtml(rawUrl);
   var safeName = escapeHtml(item.name);
 
   return [
     '<article class="icon-card ' + cardClass + '" tabindex="0" data-copy-url="' + safeUrl + '" data-copy-name="' + safeName + '">',
     '  <div class="artboard">',
-    '    <span class="format-tag">' + collection.tag + "</span>",
+    '    <span class="format-tag">' + escapeHtml(format) + "</span>",
     '    <img src="' + imagePath + '" alt="' + safeName + '" loading="lazy">',
     '    <span class="copy-overlay">点击复制 ' + COPY_ICON + "</span>",
     "  </div>",
