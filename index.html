@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#080910">
+    <meta name="theme-color" content="#f5f6f8">
     <meta name="description" content="豆包输入法图标仓库，点击图标复制图片直链。">
     <title>豆包输入法图标仓库</title>
     <link rel="stylesheet" href="styles.css">
@@ -13,118 +13,67 @@
       <header class="topbar">
         <a class="brand" href="#top" aria-label="返回首页">
           <span class="brand-mark" aria-hidden="true">
-            <span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
           </span>
           <span class="brand-copy">
-            <strong>豆包输入法</strong>
-            <small>ICON LIBRARY</small>
+            <strong>豆包输入法图标仓库</strong>
+            <small>IMAGE LINK TOOL</small>
           </span>
         </a>
-        <div class="topbar-meta">
-          <span class="demo-pill"><i></i> PUBLIC LIBRARY</span>
-          <span class="version-label">v1.0</span>
+        <div class="topbar-actions">
+          <span class="site-label">图片直链工具</span>
+          <a class="header-link" href="#library">浏览图标</a>
         </div>
       </header>
 
       <main>
-        <section class="hero" aria-labelledby="hero-title">
-          <div class="hero-copy">
-            <p class="eyebrow"><span class="eyebrow-dot"></span> 为键盘左上角准备的图标收藏夹</p>
-            <h1 id="hero-title">让键盘左上角<br><em>换一个<br class="mobile-only-break">喜欢的图标</em></h1>
-            <p class="hero-description">
-              点击任意素材，复制可以直接粘贴到豆包输入法的图片直链。
-              GIF 会保持动态，PNG 会保持清晰。
+        <section class="tool-intro" aria-labelledby="intro-title">
+          <div class="intro-copy">
+            <p class="eyebrow">豆包输入法 · 图标仓库</p>
+            <h1 id="intro-title">选择图标，<br class="mobile-only-break">复制直链</h1>
+            <p class="intro-description">
+              给输入法左上角换一个喜欢的图标。点击任意卡片，图片直链会自动复制到剪切板。
             </p>
-            <div class="hero-actions">
-              <a class="primary-action" href="#library">
-                开始挑选
-                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10.5 5.5 15 10l-4.5 4.5"/></svg>
-              </a>
-              <span class="click-note"><kbd>CLICK</kbd> 复制直链</span>
-            </div>
+            <p class="format-note">
+              支持 <b>PNG</b> / <b>GIF</b> / <b>JPG</b>
+              <span class="note-separator">·</span>
+              当前素材 <strong data-stat="total">13</strong> 个
+            </p>
           </div>
 
-          <div class="hero-art" aria-label="图标在输入法工具栏中的预览">
-            <div class="hero-orbit orbit-one"></div>
-            <div class="hero-orbit orbit-two"></div>
-            <div class="floating-tag tag-gif"><span>GIF</span> 动态保留</div>
-            <div class="floating-tag tag-copy"><span>⌁</span> 一键复制</div>
-            <div class="keyboard-mockup">
-              <div class="mockup-topline">
-                <span class="mockup-brand"><span class="mockup-brand-dot"></span> 豆包输入法</span>
-                <span class="mockup-status">ICON PREVIEW</span>
-              </div>
-              <div class="mockup-toolbar">
-                <div class="mockup-icon-wrap">
-                  <img src="icons/animated/cat-scratch.gif" alt="猫咪动态示例">
-                </div>
-                <div class="mockup-toolbar-copy">
-                  <strong>今日换个心情</strong>
-                  <span>点击下方图标复制直链</span>
-                </div>
-                <span class="mockup-more">•••</span>
-              </div>
-              <div class="mockup-keys" aria-hidden="true">
-                <span>Q</span><span>W</span><span>E</span><span>R</span><span>T</span><span>Y</span><span>U</span><span>I</span><span>O</span><span>P</span>
-                <span>A</span><span>S</span><span>D</span><span>F</span><span>G</span><span>H</span><span>J</span><span>K</span><span>L</span>
-                <span class="wide-key">⇧</span><span>Z</span><span>X</span><span>C</span><span>V</span><span>B</span><span>N</span><span>M</span><span class="wide-key">⌫</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="stat-strip" aria-label="素材统计">
-          <div class="stat-item">
-            <strong data-stat="total">13</strong>
-            <span>个素材</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <strong data-stat="animated">10</strong>
-            <span>动态 GIF</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-item">
-            <strong data-stat="static">2</strong>
-            <span>静态 PNG</span>
-          </div>
-          <div class="stat-divider"></div>
-          <div class="stat-message">
-            <span class="status-dot"></span>
-            <span>点击即复制 · 可直接使用</span>
-          </div>
+          <aside class="usage-card" aria-label="使用方法">
+            <p class="usage-title">使用方法</p>
+            <ol class="usage-list">
+              <li><span>1</span><b>点击图标</b></li>
+              <li><span>2</span><b>复制直链</b></li>
+              <li><span>3</span><b>粘贴到输入法设置</b></li>
+            </ol>
+          </aside>
         </section>
 
         <section class="library" id="library" aria-labelledby="library-title">
-          <div class="library-intro">
+          <div class="library-toolbar">
             <div>
-              <p class="section-kicker">SELECT · COPY · USE</p>
-              <h2 id="library-title">挑一个，直接带走</h2>
-              <p class="section-description">点击卡片或“复制直链”按钮，链接会自动进入剪切板。</p>
+              <p class="section-kicker">图标库</p>
+              <h2 id="library-title">选择你要的图标</h2>
             </div>
-            <div class="raw-note">
-              <span class="raw-note-icon" aria-hidden="true">↗</span>
-              <span>
-                <strong>复制的是 Raw 直链</strong>
-                <small>对应 GitHub 仓库中的原始文件</small>
-              </span>
-            </div>
+            <p class="toolbar-hint">点击卡片或按钮复制直链</p>
           </div>
 
           <nav class="category-nav" aria-label="图标分类">
             <a class="category-link active" href="#animated">
-              <span class="category-index">01</span>
-              <span>动态图标</span>
+              <span class="category-name-full">动态图标</span>
+              <span class="category-name-short">动态</span>
               <b data-category-count="animated">10</b>
             </a>
             <a class="category-link" href="#static">
-              <span class="category-index">02</span>
-              <span>静态图标</span>
+              <span class="category-name-full">静态图标</span>
+              <span class="category-name-short">静态</span>
               <b data-category-count="static">2</b>
             </a>
             <a class="category-link" href="#default">
-              <span class="category-index">03</span>
-              <span>默认图标</span>
+              <span class="category-name-full">默认图标</span>
+              <span class="category-name-short">默认</span>
               <b data-category-count="default">1</b>
             </a>
           </nav>
@@ -134,8 +83,7 @@
       </main>
 
       <footer class="footer">
-        <div class="footer-brand"><span class="footer-mark">✦</span> 豆包输入法图标仓库</div>
-        <p>GitHub Pages · 点击图标即可复制直链</p>
+        <p>豆包输入法图标仓库 · 点击图标复制直链</p>
         <a href="#top">回到顶部 ↑</a>
       </footer>
     </div>

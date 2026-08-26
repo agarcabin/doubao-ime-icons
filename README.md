@@ -12,7 +12,7 @@ https://raw.githubusercontent.com/agarcabin/doubao-ime-icons/main
 
 在线页面：
 
-https://agarcabin.github.io/doubao-ime-icons/
+https://logo.agar-cabin.site/
 
 ## 本地预览
 
