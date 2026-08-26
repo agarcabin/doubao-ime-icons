@@ -46,8 +46,7 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-button,
-kbd {
+button {
   font: inherit;
 }
 
@@ -60,44 +59,13 @@ kbd {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 72px;
+  min-height: 64px;
   border-bottom: 1px solid var(--border);
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
-}
-
-.brand-mark {
-  display: grid;
-  grid-template-columns: repeat(2, 7px);
-  grid-template-rows: repeat(2, 7px);
-  gap: 3px;
-  width: 25px;
-  height: 25px;
-  padding: 3px;
-  border: 1px solid var(--accent);
-  border-radius: 6px;
-}
-
-.brand-mark span {
-  display: block;
-  border-radius: 2px;
-  background: var(--accent);
-}
-
-.brand-mark span:nth-child(2) {
-  opacity: 0.72;
-}
-
-.brand-mark span:nth-child(3) {
-  opacity: 0.48;
-}
-
-.brand-mark span:nth-child(4) {
-  opacity: 0.86;
 }
 
 .brand-copy {
@@ -125,10 +93,6 @@ kbd {
   font-size: 12px;
 }
 
-.site-label {
-  color: var(--muted-dark);
-}
-
 .header-link {
   color: var(--accent);
   font-weight: 650;
@@ -141,121 +105,8 @@ kbd {
   text-underline-offset: 3px;
 }
 
-.tool-intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 280px;
-  align-items: center;
-  gap: 70px;
-  padding: 67px 0 62px;
-  border-bottom: 1px solid var(--border);
-}
-
-.intro-copy {
-  max-width: 650px;
-}
-
-.eyebrow,
-.section-kicker {
-  margin: 0 0 12px;
-  color: var(--accent);
-  font-size: 11px;
-  font-weight: 750;
-  letter-spacing: 0.08em;
-}
-
-.intro-copy h1 {
-  margin: 0 0 16px;
-  font-size: clamp(38px, 5vw, 60px);
-  font-weight: 750;
-  letter-spacing: -0.06em;
-  line-height: 1.12;
-}
-
-.mobile-only-break {
-  display: none;
-}
-
-.intro-description {
-  max-width: 540px;
-  margin: 0 0 18px;
-  color: var(--muted-dark);
-  font-size: 16px;
-  line-height: 1.75;
-}
-
-.format-note {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 0;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.format-note b {
-  color: var(--muted-dark);
-  font-size: 11px;
-}
-
-.format-note strong {
-  color: var(--text);
-}
-
-.note-separator {
-  padding: 0 3px;
-  color: var(--border-dark);
-}
-
-.usage-card {
-  padding: 18px 20px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-}
-
-.usage-title {
-  margin: 0 0 14px;
-  color: var(--muted-dark);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.usage-list {
-  display: grid;
-  gap: 11px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.usage-list li {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  color: var(--muted-dark);
-  font-size: 12px;
-}
-
-.usage-list li span {
-  display: grid;
-  flex: 0 0 21px;
-  place-items: center;
-  width: 21px;
-  height: 21px;
-  border-radius: 6px;
-  color: var(--accent);
-  background: var(--accent-soft);
-  font-size: 10px;
-  font-weight: 700;
-}
-
-.usage-list li b {
-  font-weight: 600;
-}
-
 .library {
-  padding: 68px 0 82px;
+  padding: 38px 0 76px;
 }
 
 .library-toolbar {
@@ -263,14 +114,18 @@ kbd {
   align-items: end;
   justify-content: space-between;
   gap: 24px;
-  margin-bottom: 25px;
+  margin-bottom: 24px;
 }
 
 .section-kicker {
-  margin-bottom: 5px;
+  margin: 0 0 5px;
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
 }
 
-.library-toolbar h2 {
+.library-toolbar h1 {
   margin: 0;
   font-size: 28px;
   font-weight: 700;
@@ -284,10 +139,13 @@ kbd {
 }
 
 .category-nav {
-  display: inline-flex;
+  display: flex;
   gap: 4px;
+  width: max-content;
+  max-width: 100%;
   padding: 4px;
-  margin-bottom: 46px;
+  margin-bottom: 42px;
+  overflow-x: auto;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: var(--surface);
@@ -301,10 +159,10 @@ kbd {
   min-width: 120px;
   min-height: 37px;
   padding: 7px 12px;
-  overflow: hidden;
   border-radius: 7px;
   color: var(--muted-dark);
   font-size: 12px;
+  white-space: nowrap;
   transition: color 160ms ease, background 160ms ease;
 }
 
@@ -341,7 +199,7 @@ kbd {
 
 .category-section {
   scroll-margin-top: 24px;
-  margin-bottom: 68px;
+  margin-bottom: 62px;
 }
 
 .category-section:last-child {
@@ -439,14 +297,19 @@ kbd {
   letter-spacing: 0.05em;
 }
 
-.static-card .format-tag {
+.ime-presets-card .format-tag {
+  color: #246c63;
+  background: #e5f6f0;
+}
+
+.recommended-static-card .format-tag {
   color: #5b42a8;
   background: #f0ecff;
 }
 
-.default-card .format-tag {
-  color: var(--success);
-  background: var(--success-soft);
+.recommended-animated-card .format-tag {
+  color: #a25b1e;
+  background: #fff0df;
 }
 
 .copy-overlay {
@@ -613,15 +476,6 @@ kbd {
 }
 
 @media (max-width: 900px) {
-  .tool-intro {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .usage-card {
-    width: min(100%, 430px);
-  }
-
   .icon-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -634,7 +488,7 @@ kbd {
   }
 
   .topbar {
-    min-height: 64px;
+    min-height: 60px;
   }
 
   .topbar-actions {
@@ -645,51 +499,32 @@ kbd {
     font-size: 13px;
   }
 
-  .tool-intro {
-    gap: 24px;
-    padding: 47px 0 42px;
-  }
-
-  .intro-copy h1 {
-    font-size: clamp(36px, 11vw, 52px);
-  }
-
-  .mobile-only-break {
-    display: block;
-  }
-
-  .intro-description {
-    font-size: 14px;
-  }
-
   .library {
-    padding: 48px 0 62px;
+    padding: 27px 0 58px;
   }
 
   .library-toolbar {
     align-items: flex-start;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 19px;
+    gap: 6px;
+    margin-bottom: 17px;
   }
 
-  .library-toolbar h2 {
+  .library-toolbar h1 {
     font-size: 24px;
   }
 
   .category-nav {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     width: 100%;
-    max-width: 100%;
-    margin-bottom: 38px;
+    margin-bottom: 34px;
+    overflow: visible;
   }
 
   .category-link {
-    flex: none;
     min-width: 0;
-    width: 100%;
-    gap: 4px;
+    gap: 5px;
     padding: 6px 5px;
     font-size: 10px;
   }
@@ -703,11 +538,13 @@ kbd {
   }
 
   .category-link b {
-    display: none;
+    min-width: 17px;
+    height: 17px;
+    font-size: 9px;
   }
 
   .category-section {
-    margin-bottom: 53px;
+    margin-bottom: 49px;
   }
 
   .section-heading {
